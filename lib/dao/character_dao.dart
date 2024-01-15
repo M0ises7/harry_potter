@@ -18,4 +18,7 @@ abstract class CharacterDao {
 
   @delete
   Future<void> deleteCharacter(Character character);
+
+  @Query('DELETE FROM Character')
+  Future<void> deleteAllCharacter();
 }

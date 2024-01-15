@@ -85,7 +85,7 @@ class _$AppDataBase extends AppDataBase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `alternateNames` TEXT NOT NULL, `species` TEXT NOT NULL, `gender` TEXT NOT NULL, `house` TEXT NOT NULL, `dateOfBirth` TEXT NOT NULL, `yearOfBirth` INTEGER NOT NULL, `wizard` INTEGER NOT NULL, `ancestry` TEXT NOT NULL, `eyeColour` TEXT NOT NULL, `hairColour` TEXT NOT NULL, `wand` TEXT, `patronus` TEXT NOT NULL, `hogwartsStudent` INTEGER NOT NULL, `hogwartsStaff` INTEGER NOT NULL, `actor` TEXT NOT NULL, `alternateActors` TEXT NOT NULL, `alive` INTEGER NOT NULL, `image` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `alternateNames` TEXT NOT NULL, `species` TEXT NOT NULL, `gender` TEXT NOT NULL, `house` TEXT NOT NULL, `dateOfBirth` TEXT NOT NULL, `yearOfBirth` INTEGER, `wizard` INTEGER NOT NULL, `ancestry` TEXT NOT NULL, `eyeColour` TEXT NOT NULL, `hairColour` TEXT NOT NULL, `wand` TEXT, `patronus` TEXT NOT NULL, `hogwartsStudent` INTEGER NOT NULL, `hogwartsStaff` INTEGER NOT NULL, `actor` TEXT NOT NULL, `alternateActors` TEXT NOT NULL, `alive` INTEGER NOT NULL, `image` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -215,7 +215,7 @@ class _$CharacterDao extends CharacterDao {
             gender: row['gender'] as String,
             house: row['house'] as String,
             dateOfBirth: row['dateOfBirth'] as String,
-            yearOfBirth: row['yearOfBirth'] as int,
+            yearOfBirth: row['yearOfBirth'] as int?,
             wizard: (row['wizard'] as int) != 0,
             ancestry: row['ancestry'] as String,
             eyeColour: row['eyeColour'] as String,
@@ -243,7 +243,7 @@ class _$CharacterDao extends CharacterDao {
             gender: row['gender'] as String,
             house: row['house'] as String,
             dateOfBirth: row['dateOfBirth'] as String,
-            yearOfBirth: row['yearOfBirth'] as int,
+            yearOfBirth: row['yearOfBirth'] as int?,
             wizard: (row['wizard'] as int) != 0,
             ancestry: row['ancestry'] as String,
             eyeColour: row['eyeColour'] as String,
@@ -260,6 +260,11 @@ class _$CharacterDao extends CharacterDao {
         arguments: [id],
         queryableName: 'Character',
         isView: false);
+  }
+
+  @override
+  Future<void> deleteAllCharacter() async {
+    await _queryAdapter.queryNoReturn('DELETE FROM Character');
   }
 
   @override
