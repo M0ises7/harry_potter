@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:floor/floor.dart';
-
+//funciones para manejar listas en model, para el uso de floor 
 class StringListConverter extends TypeConverter<List<String>, String> {
   @override
   List<String> decode(String databaseValue) {

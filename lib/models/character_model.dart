@@ -195,7 +195,7 @@ class Wand {
         id: json["id"] ?? 0,
         wood: json["wood"] ?? '',
         core: json["core"] ?? '',
-        length: json["length"]?.toDouble() ?? 0.0,  // Se usa el operador ?. para manejar null
+        length: json["length"]?.toDouble() ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {

@@ -46,8 +46,8 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      body: Stack(
-        children: [ SingleChildScrollView(
+      body: Stack(children: [
+        SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -86,13 +86,13 @@ class _HomeViewState extends State<HomeView> {
                     );
                   }
                   return Observer(builder: (_) {
-                      if (homeViewModel.isLoading) {
-              // Esto coloca el CircularProgressIndicator en el centro y sobre los otros widgets.
-              return Container(
-                color: Colors.black.withOpacity(0.5), // fondo semi-transparente
-                child: const Center(child:  CircularProgressIndicator()),
-              );
-            }
+                    if (homeViewModel.isLoading) {
+                      // Esto coloca el CircularProgressIndicator en el centro y sobre los otros widgets.
+                      return Container(
+                        color: Colors.black.withOpacity(0.5),
+                        child: const Center(child: CircularProgressIndicator()),
+                      );
+                    }
                     return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -125,8 +125,8 @@ class _HomeViewState extends State<HomeView> {
               )
             ],
           ),
-        ),]
-      ),
+        ),
+      ]),
     );
   }
 }

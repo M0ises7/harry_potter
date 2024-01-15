@@ -37,7 +37,6 @@ abstract class _HomeViewModel with Store {
       character.yearOfBirth ??= calculateYearOfBirth(character.dateOfBirth);
 
       await CharacterController.insertCharacter(character);
-      print("insertados");
     }
     await setAsyncCharacters();
     hasUpdated = true;
