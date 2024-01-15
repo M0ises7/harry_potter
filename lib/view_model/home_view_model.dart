@@ -39,8 +39,8 @@ abstract class _HomeViewModel with Store {
       await CharacterController.insertCharacter(character);
     }
     await setAsyncCharacters();
-    hasUpdated = true;
     isLoading = false;
+    hasUpdated = true;
   }
 
   @computed

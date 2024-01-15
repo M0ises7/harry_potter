@@ -8,7 +8,6 @@ class ApiService {
         await http.get(Uri.parse('https://hp-api.onrender.com/api/characters'));
 
     if (response.statusCode == 200) {
-      print(response.body);
       List<dynamic> data = jsonDecode(response.body);
       return data.map((json) => Character.fromJson(json)).toList();
     } else {

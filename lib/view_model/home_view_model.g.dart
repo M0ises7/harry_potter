@@ -65,6 +65,22 @@ mixin _$HomeViewModel on _HomeViewModel, Store {
     });
   }
 
+  late final _$isLoadingAtom =
+      Atom(name: '_HomeViewModel.isLoading', context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   late final _$setAsyncCharactersAsyncAction =
       AsyncAction('_HomeViewModel.setAsyncCharacters', context: context);
 
@@ -103,6 +119,7 @@ mixin _$HomeViewModel on _HomeViewModel, Store {
 observerCharacters: ${observerCharacters},
 searchText: ${searchText},
 hasUpdated: ${hasUpdated},
+isLoading: ${isLoading},
 filteredCharacters: ${filteredCharacters}
     ''';
   }

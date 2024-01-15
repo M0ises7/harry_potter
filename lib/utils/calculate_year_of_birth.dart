@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+
 // funcion para calcular fecha de nacimiento
 int calculateYearOfBirth(String dateOfBirth) {
   // Verificar que la fecha de nacimiento no esté vacía.
@@ -27,4 +28,3 @@ int calculateYearOfBirth(String dateOfBirth) {
     return 0;
   }
 }
-
